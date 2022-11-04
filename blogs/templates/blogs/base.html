@@ -1,19 +1,23 @@
 <p>
-    <a href="{% url 'blogs:index' %}">Blogs</a>
+    <a href="{% url 'blogs:index' %}">Blogs</a> -
+    <a href="{% url 'blogs:posts'%}">Posts</a>
+
 
     {% if user.is_authenticated %}
-    Hello, {{ user.username }}.
-    <a href="{% url 'users:logout' %}">
-        Log out
-    </a>
+        Hello, {{ user.username }}.
+        <a href="{% url 'users:logout' %}">
+            Log out
+        </a>
     {% else %}
-    <a href="{% url 'users:register' %}">
-        Register
-    </a> - 
-    <a href="{% url 'users:login'%}">
-        Log in
-    </a>
+        
+        <a href="{% url 'users:register' %}">
+            Register
+        </a> - 
+        <a href="{% url 'users:login'%}">
+            Log in
+        </a> 
     {% endif %}
 
-</p
+    </p>
+</p>
 {% block content %}{% endblock content%}

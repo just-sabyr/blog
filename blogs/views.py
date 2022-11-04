@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from blogs.models import BlogPost, Comment
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 from django.contrib.auth.decorators import permission_required
 
@@ -40,7 +40,7 @@ def comments(request, post_id):
 
     return render(request, 'blogs/comments.html', context)
 
-@permission_required("blogs.add_post", login_url='/posts')
+@permission_required("blogs.add_post")
 def new_post(request):
     """Add a new post."""
     if request.method != "POST":
@@ -56,3 +56,20 @@ def new_post(request):
     # Display a blank or invalid form.
     context = {'form': form}
     return render(request, 'blogs/new_post.html', context)
+
+
+def new_comment(request, post_id):
+    """Add a new comment."""
+    if request.method != "POST":
+        # No data submitted, create a blank form
+        form = CommentForm()
+    else:
+        # POST data submitted; process data.
+        form = CommentForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("blogs:comments")
+
+    # Display a blank or invalid form
+    context = {'form': form}
+    return render(request, 'blogs/new_comment.html', context)

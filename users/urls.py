@@ -1,3 +1,5 @@
+"""Defines URL patters for users"""
+
 from django.urls import path, include
 
 from . import views
@@ -9,4 +11,5 @@ urlpatterns = [
 
     # Registration page.
     path('register/', views.register, name='register'),
+
 ]
