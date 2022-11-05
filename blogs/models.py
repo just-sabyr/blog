@@ -12,8 +12,9 @@ class BlogPost(models.Model):
         return self.title
 
 class Comment(models.Model):
-    """Comment for each Post."""
+    "Comment for each Post."
     post = models.ForeignKey(BlogPost, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 

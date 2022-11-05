@@ -4,7 +4,7 @@
 
 <p>Add a new comment.</p>
 
-<form action="{% url 'blogs:new_comment' %}" method="post">
+<form action="{% url 'blogs:new_comment' post.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button name="submit">Add comment</button>

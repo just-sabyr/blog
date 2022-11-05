@@ -14,4 +14,6 @@ urlpatterns = [
     path('posts/<int:post_id>/comments', views.comments, name='comments'),
     # Page for adding a new post.
     path('new_post/', views.new_post, name='new_post'),
+    # Page for adding a new comment.
+    path('new_comment/<int:post_id>/', views.new_comment, name='new_comment'),
 ]

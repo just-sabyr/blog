@@ -6,6 +6,7 @@
 <p>
     {{ post.content }}
 </p>
+<a href="{% url 'blogs:comments' post_id=post.id %}" >Comments</a>
 
 
 {% endblock content %}

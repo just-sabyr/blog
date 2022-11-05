@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<p> Post: <br> {{post}} </p>
+<p> Post: <br> {{ post.title }} </p>
 
 <p> Comments: </p>
 
@@ -11,10 +11,12 @@
     <li>
         <p> {{comment.text|linebreaks}} </p>
         <p> {{comment.date_added|date:'M d, Y H:i'}} </p>
+        <p> {{comment.owner}} </p>
     </li>
     {% empty %}
     <li>There are no comments yet.</li>
     {% endfor %}
+    <a href="{% url 'blogs:new_comment' post_id=post.id %}">New Comment</a> 
 <ul>
 
 {% endblock content %}
