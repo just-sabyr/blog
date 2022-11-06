@@ -10,7 +10,7 @@
     {% for comment in comments %}
     <li>
         <p> {{comment.text|linebreaks}} </p>
-        <p> {{comment.date_added|date:'M d, Y H:i'}} </p>
+        <p> {{ comment.date_added|timesince }} ago</p>
         <p> {{comment.owner}} </p>
     </li>
     {% empty %}
