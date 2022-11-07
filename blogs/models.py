@@ -8,6 +8,9 @@ class BlogPost(models.Model):
     content = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
 
+    # for uploading files:
+    upload = models.FileField(upload_to='uploads/%Y/%m/%d/',max_length=250,null=True, default=None)
+
     def __str__(self):
         return self.title
 

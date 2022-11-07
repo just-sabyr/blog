@@ -1,4 +1,5 @@
 {% extends 'blogs/base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 <h1> {{ post.title|linebreaks }} </h1>
@@ -6,7 +7,16 @@
 <p>
     {{ post.content }}
 </p>
-<a href="{% url 'blogs:comments' post_id=post.id %}" >Comments</a>
+
+{% if post.upload %}
+<div>
+        <img class="mx-auto d-block mb-4 img-fluid" src="{{ post.upload.url }}">
+</div>
+{% endif %}
+
+{% buttons %}
+<button class="btn-secondary mb-4" href="{% url 'blogs:comments' post_id=post.id %}">Comments</button>
+{% endbuttons %}
 
 
 {% endblock content %}

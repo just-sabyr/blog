@@ -6,8 +6,8 @@ from .models import BlogPost, Comment
 class PostForm(forms.ModelForm):
     class Meta:
         model = BlogPost
-        fields = ['title', 'content']
-        labels = {'title': 'Your title', 'content': ''}
+        fields = ['title', 'content', 'upload']
+        labels = {'title': 'Your title', 'content': '', 'upload': ''}
 
 
 class CommentForm(forms.ModelForm):

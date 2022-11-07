@@ -6,6 +6,8 @@ from .forms import PostForm, CommentForm
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.decorators import login_required
 
+from django.views.decorators.csrf import csrf_exempt
+
 def index(request):
     """The home page for Blog."""
     return render(request, 'blogs/index.html')
@@ -41,6 +43,7 @@ def comments(request, post_id):
     return render(request, 'blogs/comments.html', context)
 
 @permission_required("blogs.add_post")
+@csrf_exempt
 def new_post(request):
     """Add a new post."""
     if request.method != "POST":
